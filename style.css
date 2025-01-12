@@ -1,91 +1,298 @@
-@import url('https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=Anton&family=Jersey+15&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Montserrat:wght@300;500;700&display=swap');
+
+/* Global Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: monospace;
-    background: linear-gradient(90deg, hsl(0, 0%, 0%), hsl(0, 0%, 7%));
-    color: hsl(113, 100%, 74%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+html {
+    scroll-behavior: smooth;
 }
 
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(120deg, #1e293b, #3b4252); /* Tonuri reci de albastru și gri */
+    color: #f8f9fa; /* Alb curat */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Header Styling */
 header {
-    font-family: 'Poppins', sans-serif;
-    text-align: center  ;
-    color: black;
-    background-color: white;
+    text-align: center;
+    background-color: #4c566a; /* Gri deschis */
+    color: #eceff4; /* Alb-gri */
     width: 100%;
-    height: 100px;
-    margin-bottom: 50px;
+    padding: 20px 0;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    position: relative; /* Permite poziționarea absolută a elementelor interne */
 }
 
 header h1 {
-    font-size: 40px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
 }
 
-.About h4{
-    font-family: "Jersey 15", serif;
+header h2 {
+    font-size: 1.2rem;
     font-weight: 400;
-    font-style: normal;
+    color: #d8dee9; /* Ton mai deschis */
+}
+
+header h3 {
+    text-align: left;
+    position: absolute; /* Poziționează h3 absolut în raport cu header */
+    top: 3%; /* Plasează-l în partea de sus */
+    left: 1%; /* Plasează-l în partea stângă */
+    margin: 0; /* Elimină orice margine implicită */
+}
+
+/* About Section */
+.About {
     text-align: center;
-    font-size: 40px;
-    margin: 10px;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: url('https://via.placeholder.com/800x400') center / cover fixed;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+
+.About h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #88c0d0; /* Albastru pastel */
+    margin-bottom: 10px;
 }
 
 .About p {
-    font-family: "Jersey 15", serif;
-    font-weight: 400;
-    font-style: normal;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: #d8dee9; /* Alb-gri */
+}
+
+/* Changing Text Animation */
+.changing-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #8fbcbb; /* Albastru-verde pastel */
     text-align: center;
-    font-size: 20px;
-    margin: 10px;
-}
-
-.links ul {
-    list-style: none; 
-}
-.links li {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 40px;
-    color: black;
-    background-color: white;
-    margin: 10px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 10px;
-}
-
-.links a {
-    font-family: "Montserrat", sans-serif;
-    text-decoration: none;
-    color: hsl(120, 20%, 32%);
-    transition: ease-in 0.2s;
-}
-
-.links a:hover { 
- font-size: 20px;
-}
-
-footer {
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
-    color: black;
-    background-color: rgb(152, 248, 123);
-    width: 100%;
-    height: 100px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    border-radius: 20px 20px 0 0;
+    margin-bottom: 20px;
+    height: 2.5rem;
+    overflow: hidden;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.changing-text span {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(100%);
+    animation: textChange 6s infinite ease-in-out;
+}
+
+.changing-text span:nth-child(1) {
+    animation-delay: 0s;
+}
+.changing-text span:nth-child(2) {
+    animation-delay: 2s;
+}
+.changing-text span:nth-child(3) {
+    animation-delay: 4s;
+}
+
+@keyframes textChange {
+    0%, 20% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    25%, 100% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
+
+/* Links Section */
+.links {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.links h4 {
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Poppins', sans-serif;
+    color: #eceff4;
+    margin-bottom: 20px;
+    text-shadow: 4px 4px 10px black;
+}
+
+.links ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.links li {
+    margin: 10px 0;
+    padding: 12px 20px;
+    background: #3b4252;
+    border: 1px solid #8fbcbb;
+    border-radius: 8px;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.links li:hover {
+    background: #88c0d0;
+    transform: scale(1.1);
+}
+
+.links a {
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    color: #eceff4;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.links a:hover {
+    color: #004466;
+}
+
+
+/* Footer Styling */
+footer {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    color: #eceff4; /* Alb curat */
+    background: #8fbcbb; /* Albastru-verde pastel */
+    width: 100%;
+    padding: 15px 0;
+    border-radius: 10px;
+    box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.3);
+}
+
+footer h3 {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+/* Styling for Downward Arrows */
+.arrow {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ececec; /* Albastru-verde pastel */
+    animation: bounce 1.5s infinite ease-in-out;
+    display: inline-block;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+/* Custom Scrollbar */
+/* Bara de scroll (Scrollbar) */
+::-webkit-scrollbar {
+    width: 12px; /* Lățimea mai largă a barei de scroll */
+    background-color: transparent; /* Fundal transparent pentru scrollbar */
+}
+
+/* Fundalul barei de scroll (track) */
+::-webkit-scrollbar-track {
+    background: #3b4252; /* Fundal închis pentru track */
+}
+
+/* Thumb-ul barei de scroll */
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #5e81ac, #88c0d0); /* Gradient subtil pentru thumb */
+    border: 3px solid #3b4252; /* Margine subtire pentru a adăuga contrast */
+}
+
+/* Efectul hover pe thumb */
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #81a1c1, #8fbcbb); /* Culoare mai deschisă cu gradient la hover */
+    box-shadow: 0 0 8px rgba(143, 188, 187, 0.7); /* Efect de umbră pentru un efect mai atractiv */
+}
+
+/* Tranziție mai lină */
+::-webkit-scrollbar-thumb {
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease; /* Tranziție lină la hover și schimbări */
+}
+
+/* Efect de scalare ușoară pe hover */
+::-webkit-scrollbar-thumb:hover {
+    transform: scale(1.1); /* Mărește puțin thumb-ul la hover pentru un efect mai dinamic */
+}
+
+
+/* Stilizare alertă personalizată */
+.alert {
+    display: none; /* Inițial ascuns */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #2d3748;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    max-width: 400px;
+    width: 100%;
+    color: white;
+    font-family: 'Arial', sans-serif;
+}
+
+.alert-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.alert p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.close-btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.close-btn:hover {
+    background-color: #45a049;
 }
